@@ -1,4 +1,4 @@
-PHP_Laravel12_Install_Bootstrap — Install Bootstrap in Laravel
+PHP_Laravel12_Install_Bootstrap — Install Bootstrap in Laravel12
 
 ---
 Goal:

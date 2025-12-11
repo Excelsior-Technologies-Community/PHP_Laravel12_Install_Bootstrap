@@ -22,7 +22,7 @@ composer create-project laravel/laravel PHP_Laravel12_Install_Bootstrap "12.*"
 cd PHP_Laravel12_Install_Bootstrap
 
 ```
-✅ Explanation:
+Explanation:
 
 composer create-project laravel/laravel PHP_Laravel12_Install_Bootstrap → Creates a new Laravel 12 project.
 
@@ -82,7 +82,7 @@ For production (optimized):
 npm run build
 ```
 
-✅ Explanation:
+ Explanation:
 
 Laravel 12 uses Vite to compile frontend assets.
 

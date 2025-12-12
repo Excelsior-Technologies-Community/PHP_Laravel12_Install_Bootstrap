@@ -337,13 +337,28 @@ Visit:
 ```
 http://127.0.0.1:8000
 ```
+
+
 You will see:
+
 
 Home page → welcome.blade.php
 
-Login/Register pages → /login, /register
+<img width="1916" height="969" alt="Screenshot 2025-12-11 181816" src="https://github.com/user-attachments/assets/2f0c0ca7-0e62-41ad-a92a-7e5044f3e20d" />
 
-Dashboard → /home after login
+
+Login/Register pages → /register
+
+<img width="1910" height="970" alt="Screenshot 2025-12-11 181838" src="https://github.com/user-attachments/assets/1f4cac88-7750-4a01-bea2-61c09bd5b6f1" />
+
+Login/Register pages → /login
+
+<img width="1910" height="965" alt="Screenshot 2025-12-11 181828" src="https://github.com/user-attachments/assets/b3e95c90-04ef-4229-baf3-e3d8cf2179bb" />
+
+
+
+
+
 
 All fully styled with Bootstrap 5.
 

@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'Laravel App') }}</title>
 
-    {{-- Load compiled CSS & JS via Vite --}}
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
-    {{-- Navbar --}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel App') }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -31,8 +29,9 @@
 
                     @auth
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ Auth::user()->avatar ? asset('avatars/' . Auth::user()->avatar) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=random' }}" alt="Avatar" class="rounded-circle me-2" style="width: 30px; height: 30px; object-fit: cover;">
                             {{ Auth::user()->name }}
                         </a>
 
@@ -66,34 +65,35 @@
         </div>
     </nav>
 
-    {{-- Main content --}}
     <main class="py-4">
         <div class="container">
             @yield('content')
         </div>
     </main>
 
-    {{-- Dark Mode JS --}}
     <script>
         const btn = document.getElementById('darkModeBtn');
-        btn?.addEventListener('click', () => {
-            document.body.classList.toggle('bg-dark');
-            document.body.classList.toggle('text-light');
+        const htmlElement = document.documentElement;
 
-            if (document.body.classList.contains('bg-dark')) {
-                localStorage.setItem('darkMode', 'enabled');
-                btn.textContent = "☀️ Light Mode";
+        const switchTheme = (theme) => {
+            if (theme === 'dark') {
+                htmlElement.setAttribute('data-bs-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                if (btn) btn.textContent = "☀️";
             } else {
-                localStorage.setItem('darkMode', 'disabled');
-                btn.textContent = "🌙 Dark Mode";
+                htmlElement.setAttribute('data-bs-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                if (btn) btn.textContent = "🌙";
             }
+        }
+
+        btn?.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-bs-theme');
+            switchTheme(currentTheme === 'dark' ? 'light' : 'dark');
         });
 
-        // Load preference on page load
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('bg-dark', 'text-light');
-            btn.textContent = "☀️ Light Mode";
-        }
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        switchTheme(savedTheme);
     </script>
 </body>
 
